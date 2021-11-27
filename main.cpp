@@ -1,24 +1,31 @@
-#include <SFML/Graphics.hpp>
+#include "main.hpp"
+
+using namespace sf;
+
+// Prototypes des fonctions 
+void InputHandler(Event event, RenderWindow& window);
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Magenta);
+    RenderWindow window(VideoMode(WIN_WIDTH, WIN_HEIGHT, 32), "Firstgame");
+    window.setVerticalSyncEnabled(true);
 
     while (window.isOpen())
     {
-        sf::Event event;
+        Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
-                window.close();
+            InputHandler(event, window);
         }
-
-        window.clear();
-        window.draw(shape);
-        window.display();
     }
 
     return 0;
+}
+
+void InputHandler(Event event, RenderWindow &window)
+{
+    if (event.type == Event::Closed)
+    {
+        window.close();
+    }
 }
