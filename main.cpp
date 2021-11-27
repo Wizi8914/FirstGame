@@ -6,6 +6,7 @@ using namespace std;
 // Prototypes des fonctions 
 void InputHandler(Event event, RenderWindow& window);
 void loadfont();
+void settext(Text& txt, String str, int size, Color color);
 
 Font font;
 
@@ -16,11 +17,7 @@ int main()
 
     loadfont();
     Text txt;
-    txt.setFont(font);
-    txt.setString("Hello World !");
-    txt.setCharacterSize(20);
-    txt.setFillColor(Color::Magenta);
-
+    settext(txt, "Hello World !", 100, Color::Yellow);
 
     while (window.isOpen())
     {
@@ -56,4 +53,12 @@ void loadfont()
     {
         cout << "font can be loaded";
     }
+}
+
+void settext(Text &txt, String str, int size, Color color)
+{
+    txt.setFont(font);
+    txt.setString(str);
+    txt.setCharacterSize(size);
+    txt.setFillColor(color);
 }
