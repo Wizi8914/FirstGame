@@ -1,22 +1,19 @@
 #include "main.hpp"
 
-using namespace sf;
-using namespace std;
-
 // Prototypes des fonctions 
 void InputHandler(Event event, RenderWindow& window);
-void loadfont();
-void settext(Text& txt, String str, int size, Color color);
+
+RenderWindow window;
 
 Font font;
+Text txt;
 
 int main()
 {
-    RenderWindow window(VideoMode(WIN_WIDTH, WIN_HEIGHT, 32), "Firstgame");
+    window.create(VideoMode(WIN_WIDTH, WIN_HEIGHT, 32), "Firstgame");
     window.setVerticalSyncEnabled(true);
 
     loadfont();
-    Text txt;
     settext(txt, "Hello World !", 100, Color::Yellow);
 
     while (window.isOpen())
@@ -45,6 +42,43 @@ void InputHandler(Event event, RenderWindow &window)
     {
         window.close();
     }
+
+    if (event.type == Event::KeyPressed)
+    {
+        if (event.key.code == Keyboard::Escape)
+        {
+            window.close();
+        }
+        if (event.key.code == Keyboard::Left)
+        {
+            settext(txt, "<", 100, Color::Yellow);
+        }
+
+    }
+
+    if (event.type == Event::MouseButtonPressed)
+    {
+        if (event.mouseButton.button == Mouse::Right)
+        {
+            settext(txt, "Right", 100, Color::Yellow);
+        }
+
+        if (event.mouseButton.button == Mouse::Left)
+        {
+            settext(txt, "Left", 100, Color::Yellow);
+        }
+    }
+
+    if (Keyboard::isKeyPressed(Keyboard::Up))
+    {
+        settext(txt, "^", 100, Color::Yellow);
+    }
+
+    if (Keyboard::isKeyPressed(Keyboard::Right))
+    {
+        settext(txt, ">", 100, Color::Yellow);
+    }
+
 }
 
 void loadfont()
