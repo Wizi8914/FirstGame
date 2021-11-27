@@ -36,51 +36,6 @@ int main()
     return 0;
 }
 
-void InputHandler(Event event, RenderWindow &window)
-{
-    if (event.type == Event::Closed)
-    {
-        window.close();
-    }
-
-    if (event.type == Event::KeyPressed)
-    {
-        if (event.key.code == Keyboard::Escape)
-        {
-            window.close();
-        }
-        if (event.key.code == Keyboard::Left)
-        {
-            settext(txt, "<", 100, Color::Yellow);
-        }
-
-    }
-
-    if (event.type == Event::MouseButtonPressed)
-    {
-        if (event.mouseButton.button == Mouse::Right)
-        {
-            settext(txt, "Right", 100, Color::Yellow);
-        }
-
-        if (event.mouseButton.button == Mouse::Left)
-        {
-            settext(txt, "Left", 100, Color::Yellow);
-        }
-    }
-
-    if (Keyboard::isKeyPressed(Keyboard::Up))
-    {
-        settext(txt, "^", 100, Color::Yellow);
-    }
-
-    if (Keyboard::isKeyPressed(Keyboard::Right))
-    {
-        settext(txt, ">", 100, Color::Yellow);
-    }
-
-}
-
 void loadfont()
 {
     if (!font.loadFromFile("resources/roboto.ttf"))
