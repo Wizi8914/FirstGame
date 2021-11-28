@@ -1,6 +1,11 @@
 //include
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <utility>
 #include "input.hpp"
 
 using namespace sf;
