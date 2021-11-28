@@ -1,9 +1,10 @@
 #include "main.hpp"
 
 // Prototypes des fonctions 
-void InputHandler(Event event, RenderWindow& window);
 
 RenderWindow window;
+
+Input input;
 
 Font font;
 Text txt;
@@ -21,7 +22,7 @@ int main()
         Event event;
         while (window.pollEvent(event))
         {
-            InputHandler(event, window);
+            input.InputHandler(event, window);
         }
 
         window.clear(Color::Black);
