@@ -3,6 +3,8 @@
 RenderWindow window;
 Input input;
 
+Image icon;
+
 Texture heroTexture;
 Sprite heroSprite;
 
@@ -12,10 +14,17 @@ int main()
     window.create(VideoMode(WIN_WIDTH, WIN_HEIGHT, 32), "Firstgame", Style::Default);
     window.setVerticalSyncEnabled(true);
 
+    if (!icon.loadFromFile("resources/image/logo.png"))
+    {
+        cout << "Erreur de chargement de l'icon";
+    }
+    window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+
     if (!heroTexture.loadFromFile("resources/image/hero_sheet.png"))
     {
         cout << "Erreur lors du chargement de la texture";
     }
+
 
     heroSprite.setTexture(heroTexture);
     heroSprite.setTextureRect(IntRect(32, 0, 32, 32));
