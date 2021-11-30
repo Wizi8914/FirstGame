@@ -43,11 +43,11 @@ void Checkbtn()
 {
     if (input.GetButton().left == true)
     {
-        
+
     }
     if (input.GetButton().right == true)
     {
-        
+
     }
     if (input.GetButton().up == true)
     {
