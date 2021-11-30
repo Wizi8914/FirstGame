@@ -8,6 +8,14 @@ Image icon;
 Texture heroTexture;
 Sprite heroSprite;
 
+enum Dir { Down, Right, Up, Left, Down_atk, Right_atk, Up_atk, Left_atk};
+
+Vector2i heroAnim(0, Down);
+
+Clock animetime;
+
+bool heroIdle = true;
+
 int main()
 {
     
@@ -25,9 +33,8 @@ int main()
         cout << "Erreur lors du chargement de la texture";
     }
 
-
     heroSprite.setTexture(heroTexture);
-    heroSprite.setTextureRect(IntRect(32, 0, 32, 32));
+    heroSprite.setTextureRect(IntRect(heroAnim.x * SPRITE_SIZE, heroAnim.y * SPRITE_SIZE, SPRITE_SIZE, SPRITE_SIZE));
 
     while (window.isOpen())
     {
@@ -38,6 +45,8 @@ int main()
 
         }
         Checkbtn();
+        animePLayer();
+        heroSprite.setTextureRect(IntRect(heroAnim.x * SPRITE_SIZE, heroAnim.y * SPRITE_SIZE, SPRITE_SIZE, SPRITE_SIZE));
         window.clear(Color::Black);
         window.draw(heroSprite);
         window.display();
@@ -52,20 +61,32 @@ void Checkbtn()
 {
     if (input.GetButton().left == true)
     {
-
+        heroAnim.y = Left;
+        heroSprite.move(-WALK_SPEED, 0);
+        heroIdle = false;
     }
-    if (input.GetButton().right == true)
+    else if (input.GetButton().right == true)
     {
-
+        heroAnim.y = Right;
+        heroSprite.move(WALK_SPEED, 0);
+        heroIdle = false;
     }
-    if (input.GetButton().up == true)
+    else if (input.GetButton().up == true)
     {
-        
+        heroAnim.y = Up;
+        heroSprite.move(0, -WALK_SPEED);
+        heroIdle = false;
     }
-    if (input.GetButton().down == true)
+    else if (input.GetButton().down == true)
     {
-        
-    } 
+        heroAnim.y = Down;
+        heroSprite.move(0, WALK_SPEED);
+        heroIdle = false;
+    }
+    else
+    {
+        heroIdle = true;
+    }
     if (input.GetButton().attack == true)
     {
        
@@ -73,5 +94,23 @@ void Checkbtn()
     if (input.GetButton().escape == true)
     {
         window.close();
+    }
+}
+
+void animePLayer()
+{
+    heroSprite.setTextureRect(IntRect(heroAnim.x * SPRITE_SIZE, heroAnim.y * SPRITE_SIZE, SPRITE_SIZE, SPRITE_SIZE));
+    if (animetime.getElapsedTime().asSeconds() > 0.1f)
+    {
+        if (heroAnim.x * SPRITE_SIZE >= heroTexture.getSize().x - SPRITE_SIZE)
+        {
+            heroAnim.x = 0;
+        }
+        else
+        {
+            if(!heroIdle)
+                heroAnim.x++;
+        }
+        animetime.restart();
     }
 }

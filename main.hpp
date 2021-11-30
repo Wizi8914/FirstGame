@@ -13,5 +13,8 @@ using namespace std;
 
 const int WIN_WIDTH = 800;
 const int WIN_HEIGHT = 576;
+const int SPRITE_SIZE = 32;
+const int WALK_SPEED = 1;
 
 void Checkbtn();
+void animePLayer();
