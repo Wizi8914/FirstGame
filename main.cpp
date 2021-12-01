@@ -16,6 +16,8 @@ Clock animetime;
 
 bool heroIdle = true;
 
+bool resetanim = false;
+
 int main()
 {
     
@@ -59,41 +61,46 @@ int main()
 
 void Checkbtn()
 {
-    if (input.GetButton().left == true)
+    if (!resetanim)
     {
-        heroAnim.y = Left;
-        heroSprite.move(-WALK_SPEED, 0);
-        heroIdle = false;
-    }
-    else if (input.GetButton().right == true)
-    {
-        heroAnim.y = Right;
-        heroSprite.move(WALK_SPEED, 0);
-        heroIdle = false;
-    }
-    else if (input.GetButton().up == true)
-    {
-        heroAnim.y = Up;
-        heroSprite.move(0, -WALK_SPEED);
-        heroIdle = false;
-    }
-    else if (input.GetButton().down == true)
-    {
-        heroAnim.y = Down;
-        heroSprite.move(0, WALK_SPEED);
-        heroIdle = false;
-    }
-    else
-    {
-        heroIdle = true;
-    }
-    if (input.GetButton().attack == true)
-    {
-       
-    }
-    if (input.GetButton().escape == true)
-    {
-        window.close();
+        if (input.GetButton().left == true)
+        {
+            heroAnim.y = Left;
+            heroSprite.move(-WALK_SPEED, 0);
+            heroIdle = false;
+        }
+        else if (input.GetButton().right == true)
+        {
+            heroAnim.y = Right;
+            heroSprite.move(WALK_SPEED, 0);
+            heroIdle = false;
+        }
+        else if (input.GetButton().up == true)
+        {
+            heroAnim.y = Up;
+            heroSprite.move(0, -WALK_SPEED);
+            heroIdle = false;
+        }
+        else if (input.GetButton().down == true)
+        {
+            heroAnim.y = Down;
+            heroSprite.move(0, WALK_SPEED);
+            heroIdle = false;
+        }
+        else
+        {
+            heroIdle = true;
+        }
+        if (input.GetButton().attack == true)
+        {
+            resetanim = true;
+            heroAnim.x = 0;
+            heroAnim.y += 4;
+        }
+        if (input.GetButton().escape == true)
+        {
+            window.close();
+        }
     }
 }
 
@@ -105,10 +112,15 @@ void animePLayer()
         if (heroAnim.x * SPRITE_SIZE >= heroTexture.getSize().x - SPRITE_SIZE)
         {
             heroAnim.x = 0;
+            if (resetanim)
+            {
+                resetanim = false;
+                heroAnim.y -= 4;
+            }
         }
         else
         {
-            if(!heroIdle)
+            if(!heroIdle || resetanim)
                 heroAnim.x++;
         }
         animetime.restart();
