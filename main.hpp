@@ -18,3 +18,4 @@ const int WALK_SPEED = 1;
 
 void Checkbtn();
 void animePLayer();
+void collisioncheck();
