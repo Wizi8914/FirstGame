@@ -50,7 +50,7 @@ int main()
         heroSprite.setTextureRect(IntRect(heroAnim.x * SPRITE_SIZE, heroAnim.y * SPRITE_SIZE, SPRITE_SIZE, SPRITE_SIZE));
         window.clear(Color::Black);
         window.draw(heroSprite);
-        window.display()
+        window.display();
 
     }
 
