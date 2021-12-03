@@ -144,6 +144,7 @@ void collisioncheck()
 
     if (hitbox.intersects(cubehitbox))
     {
-        cout << "uwu";
+
+        cout << "co";
     }
 }
