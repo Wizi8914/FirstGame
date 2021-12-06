@@ -6,7 +6,9 @@
 #include <vector>
 #include <sstream>
 #include <utility>
+#include <stdlib.h>
 #include "input.hpp"
+#include "map.hpp"
 
 using namespace sf;
 using namespace std;
@@ -18,4 +20,3 @@ const int WALK_SPEED = 1;
 
 void Checkbtn();
 void animePLayer();
-void collisioncheck();

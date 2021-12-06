@@ -78,9 +78,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\loick\Desktop\FirstGame\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\loick\Desktop\FirstGame\lib;$(LibraryPath)</LibraryPath>
-    <PublicIncludeDirectories>C:\Users\loick\Desktop\FirstGame\include;$(PublicIncludeDirectories)</PublicIncludeDirectories>
+    <IncludePath>D:\cpp projet\FirstGame\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\cpp projet\FirstGame\lib;$(LibraryPath)</LibraryPath>
+    <PublicIncludeDirectories>D:\cpp projet\FirstGame\include;$(PublicIncludeDirectories)</PublicIncludeDirectories>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="input.hpp" />
     <ClInclude Include="main.hpp" />
+    <ClInclude Include="map.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

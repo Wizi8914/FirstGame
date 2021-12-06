@@ -18,9 +18,6 @@ bool heroIdle = true;
 
 bool resetanim = false;
 
-
-RectangleShape cube(Vector2f(SPRITE_SIZE, SPRITE_SIZE));
-FloatRect cubehitbox = cube.getGlobalBounds();
 FloatRect hitbox = heroSprite.getGlobalBounds();
 
 int main()
@@ -43,9 +40,6 @@ int main()
     heroSprite.setTexture(heroTexture);
     heroSprite.setTextureRect(IntRect(heroAnim.x * SPRITE_SIZE, heroAnim.y * SPRITE_SIZE, SPRITE_SIZE, SPRITE_SIZE));
 
-    cube.setFillColor(Color::Green);
-    cube.setPosition(300, 300);
-
     while (window.isOpen())
     {
         Event event;
@@ -59,10 +53,7 @@ int main()
         window.clear(Color::Black);
 
         window.draw(heroSprite);
-        window.draw(cube);
         window.display();
-
-        collisioncheck();
 
     }
 
@@ -134,17 +125,5 @@ void animePLayer()
                 heroAnim.x++;
         }
         animetime.restart();
-    }
-}
-
-void collisioncheck()
-{
-    cubehitbox = cube.getGlobalBounds();
-    hitbox = heroSprite.getGlobalBounds();
-
-    if (hitbox.intersects(cubehitbox))
-    {
-
-        cout << "co";
     }
 }
